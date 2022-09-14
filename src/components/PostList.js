@@ -21,7 +21,7 @@ const PostList = () =>
             setPageList(posts);})
         .catch((err)=> {alert(err.message); });
 
-        setPageList(<div id="loader"> Loading </div>);
+        setPageList(<div id="loader"> loading </div>);
 
         
     }, [pageNo]); 
