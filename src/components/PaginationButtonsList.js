@@ -5,9 +5,10 @@ const PaginationButtonsList = (props) =>
     const ref = useRef();
 
     let [buttonList, setButtonList] = useState([]);
-    let prevButtonPressedID="button-1";
     let [pageNumber, setPageNumber] =useState(1);
-    useEffect(()=> {
+    
+    useEffect(()=> 
+    {
         ref.current = pageNumber;
 
     },[pageNumber])
@@ -18,14 +19,13 @@ const PaginationButtonsList = (props) =>
         //xelement= document.getElementById("button-"+prevButtonPressed);
         //xelement.className="";
         
-        event.persist();
+        //event.persist();
+        
         document.getElementById("button-"+ref.current).className="";
         setPageNumber(event.target.name);
-       // console.log("pn", pageNumber);
-        
-        setPageNo(pageNumber);
+        setPageNo(event.target.name);
         event.target.className="active-btn";
-        prevButtonPressedID=event.target.id;
+        //prevButtonPressedID=event.target.id;
 
         
     };

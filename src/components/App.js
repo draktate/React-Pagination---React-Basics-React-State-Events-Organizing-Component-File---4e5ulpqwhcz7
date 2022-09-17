@@ -7,7 +7,7 @@ const App = () => {
 
   return (
     <div id="main">
-      <PostList> Hi</PostList>
+      <PostList> </PostList>
             
     </div>
   )

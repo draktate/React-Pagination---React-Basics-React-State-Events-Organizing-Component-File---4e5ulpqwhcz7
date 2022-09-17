@@ -11,6 +11,7 @@ const PostList = () =>
     
     useEffect(() => 
     {
+        console.log("loading page:"+ pageNo);
         let postUrl='https://jsonplaceholder.typicode.com/posts?_page='+pageNo+'&_limit=5';
         fetch(postUrl)
         .then((response) => response.json())
@@ -18,10 +19,12 @@ const PostList = () =>
             const posts = data.map((item) =>
             <Post key={item.id} data={item}>
             </Post> );
-            setPageList(posts);})
+            setPageList(posts);
+            })
         .catch((err)=> {alert(err.message); });
 
         setPageList(<div id="loader"> loading </div>);
+        
 
         
     }, [pageNo]); 
@@ -29,8 +32,9 @@ const PostList = () =>
 
     return (
     <>
-        
+        <div>
         {pageList}
+        </div>
 
         <PaginationButtonsList setPageNo={setPageNo}>
             
