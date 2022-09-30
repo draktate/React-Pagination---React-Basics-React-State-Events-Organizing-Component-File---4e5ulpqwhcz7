@@ -33,7 +33,7 @@ const PostList = () =>
         })
         .catch((err)=> {alert(err.message); });
 
-        setPageList(<div id="loader"> <h1> loading..   </h1> </div>);
+        setPageList(<div id="loader">  loading..    </div>);
         
 
         
