@@ -8,9 +8,11 @@ const PostList = () =>
     const [pageNo, setPageNo] = useState(1);
     const [data, setData] = useState([]);
     const [pageList, setPageList] = useState("");
+    const [pageButtenList, setPageButtenList] = useState();
     
     useEffect(() => 
     {
+        setPageButtenList(null);
         console.log("loading page:"+ pageNo);
         let postUrl='https://jsonplaceholder.typicode.com/posts?_page='+pageNo+'&_limit=5';
         fetch(postUrl)
@@ -21,13 +23,24 @@ const PostList = () =>
             </Post> );
             setPageList(posts);
             })
+        .then(()=>{
+            let PBL= <PaginationButtonsList setPageNo={setPageNo}>
+            </PaginationButtonsList>;
+
+            setPageButtenList(PBL);
+    
+
+        })
         .catch((err)=> {alert(err.message); });
 
-        setPageList(<div id="loader"> loading </div>);
+        setPageList(<div id="loader"> <h1> loading..   </h1> </div>);
         
 
         
     }, [pageNo]); 
+
+
+    
 
 
     return (
@@ -36,9 +49,7 @@ const PostList = () =>
         {pageList}
         </div>
 
-        <PaginationButtonsList setPageNo={setPageNo}>
-            
-        </PaginationButtonsList>
+         {pageButtenList}   
     </>
     )
 }
