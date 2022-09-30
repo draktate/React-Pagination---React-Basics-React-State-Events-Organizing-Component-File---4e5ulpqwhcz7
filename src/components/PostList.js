@@ -24,20 +24,21 @@ const PostList = () =>
             setPageList(posts);
             })
         .then(()=>{
-            let PBL= <PaginationButtonsList setPageNo={setPageNo}>
+            let PBL= <PaginationButtonsList pageNo={pageNo} setPageNo={setPageNo}>
             </PaginationButtonsList>;
 
+            console.log("PBL:",{PBL});
+
+            
             setPageButtenList(PBL);
     
 
         })
         .catch((err)=> {alert(err.message); });
 
-        setPageList(<div id="loader">  loading..    </div>);
-        
 
-        
-    }, [pageNo]); 
+        setPageList(<div id="loader">  loading..    </div>);
+        }, [pageNo]); 
 
 
     
